@@ -1,0 +1,33 @@
+@extends('layouts.master')
+@section('content')
+    @if(Session::has('success'))
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                <div id="charge-message" class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
+
+        @foreach ($products->chunk(3) as $productChunk)
+                <div class="row mt-4">
+                    @foreach ($productChunk as $product)
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{ $product->image }}" alt="" style="max-height: 200px;" class="img-responsive">
+                                <div class="card-body">
+                                    <h3>{{ $product->title }}</h3>
+                                    <p class="description">{{ $product->description }}</p>
+                                    <div>
+                                        <div class=" price pull-left">$ {{ $product->price }}</div>
+                                        <a href="{{ route('add_to_cart', ['id' => $product->id]) }}" class="btn btn-primary pull-right" role="button">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            @endsection
