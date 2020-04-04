@@ -24,7 +24,20 @@ Route::get('/getCart', 'ProductController@getCart')->name('getCart');
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 
-Auth::routes();
+// Auth::routes();
+
+
+Route::get('register', 'UserController@getSignUp')->name('user.register');
+Route::post('register', 'UserController@postSignUp');
+
+
+Route::get('login', 'UserController@getSignIn')->name('user.login');
+Route::post('login', 'UserController@postSignIn');
+
+
+Route::get('profile', 'UserController@getProfile')->name('user.profile');
+
+Route::get('logout', 'UserController@getLogout')->name('user.logout');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/user/profile', 'ProductController@profile')->name('profile');

@@ -22,19 +22,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   @if(Auth::check())
-                      <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                      <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-                  
-                      <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                      <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
                         @else
-                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-                        {{-- <a class="dropdown-item" href="{{ route('profile') }}">User Profile</a> --}}
+                        <a class="dropdown-item" href="{{ route('user.login') }}">Login</a>
+                        <a class="dropdown-item" href="{{ route('user.register') }}">Register</a>
+                        <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                         @endif
                   </div>
               </li>
