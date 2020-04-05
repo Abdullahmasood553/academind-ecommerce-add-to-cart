@@ -14,8 +14,8 @@
 Route::get('/', 'ProductController@index')->name('product.index');
 Route::get('/add_to_cart/{id}', 'ProductController@add_to_cart')->name('add_to_cart');
    
-
-
+Route::get('/reduce/{id}', 'ProductController@getReducedByOne')->name('product.reduceByOne');
+Route::get('/removee/{id}', 'ProductController@getRemoveItem')->name('product.remove');
 
 Route::group(['prefix' => 'user'], function() {
     Route::group(['middleware' => 'auth'], function() {
